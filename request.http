@@ -1,0 +1,146 @@
+GET http://127.0.0.1:5353/add/10/5
+
+###
+
+GET http://127.0.0.1:5353/sub/20/10
+
+###
+
+GET http://127.0.0.1:5353/mul/50/3
+
+###
+
+GET http://127.0.0.1:5353/div/150/25
+
+###
+
+GET http://127.0.0.1:5353/div/150/0
+
+###
+
+GET http://127.0.0.1:5353/calc/20/10?operation=sub&test=a&foo=bar
+Test: coucou
+
+###
+
+POST http://127.0.0.1:5353/articles
+Content-Type: application/json
+
+{
+  "title": "Coucou",
+}
+
+###
+
+GET http://127.0.0.1:5353/todos
+
+###
+
+POST http://127.0.0.1:5353/todos
+Content-Type: application/json
+
+{ 
+  "i": 256546,
+  "coucou": "djdsmlfsdj",
+  "dfkfhfh": "dfksdhflkshfldsh"
+}
+
+###
+
+GET http://127.0.0.1:5353/todos/31681531561351
+
+###
+
+DELETE http://127.0.0.1:5353/todos/256546
+
+###
+
+POST http://127.0.0.1:5353/calculatrix
+Content-Type: application/json
+
+{
+  "operation": "add",
+  "x": 10,
+  "y": 20
+}
+
+###
+
+POST http://127.0.0.1:5353/pizzas
+Content-Type: application/json
+
+{
+  "name": "Regina",
+  "prix": 12.5
+}
+
+###
+
+GET http://127.0.0.1:5353/pizzas
+
+###
+
+PATCH http://127.0.0.1:5353/pizzas/63c108b98494022daa87523a
+Content-Type: application/json
+
+{
+  "prix": 9.6
+}
+
+###
+
+DELETE http://127.0.0.1:5353/pizzas/63c108b98494022daa87523a
+
+###
+POST http://127.0.0.1:5353/users
+Content-Type: application/json
+
+{
+  "email": "mail@gmail.com",
+  "firstname": "Janne",
+  "lastname": "Don",
+  "password": "zzz111222",
+  "repeated_password": "zzz111222"
+}
+
+###
+POST http://127.0.0.1:5353/users
+Content-Type: application/json
+
+{
+  "email": "mail@gmail.com",
+  "firstname": "Marie",
+  "lastname": "Dondon",
+  "password": "zmmmm11222",
+  "repeated_password": "zmmmm11222"
+}
+###
+
+POST http://127.0.0.1:5353/token
+Content-Type: application/json
+
+{
+  "email": "mail@gmail.com",
+  "password": "zmmmm11222"
+}
+###
+
+GET http://127.0.0.1:5353/users
+###
+
+GET http://127.0.0.1:5353/users?email=mail
+
+////
+
+GET http://127.0.0.1:5353/users?limit=90
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M2YzBhOTdjNmNhY2Y1YWUwNTJkYWQiLCJlbWFpbCI6InJvc2VAbWFpbC5jb20iLCJpYXQiOjE2NzM5NzA1Mzl9.wOk6uIvqU9ZeSdS9pOfFMM42XhHUhfeN-kti6LYYq78
+
+###
+
+POST http://127.0.0.1:5353/token
+Content-Type: application/json
+
+{
+  "email": "rose@mail.com",
+  "password": "rose12345"
+}
