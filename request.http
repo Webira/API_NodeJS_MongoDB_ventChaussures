@@ -128,12 +128,13 @@ Content-Type: application/json
 GET http://127.0.0.1:5353/users
 ###
 
-GET http://127.0.0.1:5353/users?email=mail
+GET http://127.0.0.1:5353/users?email=mail@gmail.com
 
-////
+###
 
-GET http://127.0.0.1:5353/users?limit=90
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M2YzBhOTdjNmNhY2Y1YWUwNTJkYWQiLCJlbWFpbCI6InJvc2VAbWFpbC5jb20iLCJpYXQiOjE2NzM5NzA1Mzl9.wOk6uIvqU9ZeSdS9pOfFMM42XhHUhfeN-kti6LYYq78
+GET http://127.0.0.1:5353/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M3YjUwZjQ1NDA4YjdmZjc2YWY5MzgiLCJlbWFpbCI6Im1haWxAZ21haWwuY29tIiwiaWF0IjoxNjc0MDQ2MDAyfQ.VutK5ssYa8idTm71Q4bfq0Q_MedFPxJBQKrutCxGUIc
+
 
 ###
 
