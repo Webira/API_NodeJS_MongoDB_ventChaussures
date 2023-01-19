@@ -1,4 +1,5 @@
 import { FastifyInstance } from 'fastify'
+import { ObjectId } from 'mongodb'
 import {
   NewUserModel,
   NewUserSchema,
@@ -132,4 +133,24 @@ export default async function users(app: FastifyInstance) {
       })
     },
   )
+/**
+   * Route permettant d'afficher l'utilisateur actuellement
+   * connécté via un jeton
+   */
+  app.get('/me', { schema: { response: { 200: UserSchema } } },
+    async request => {
+      // On valide le jeton de connexion
+      await request.jwtVerify()
+
+      // On récupére l'utilisateur connécté
+      const user = UserModel.parse(
+        await app.mongo.db?.collection('users').findOne({
+          _id: new ObjectId((request.user as any)._id),
+        }),
+      )
+      // On le retourne
+      return user
+    },
+  )
+
 }

@@ -2,6 +2,7 @@ import fastify from 'fastify'
 import fastifyMongodb from '@fastify/mongodb'
 import users from './routes/users.route'
 import fastifyJwt from '@fastify/jwt'
+import shoes from './routes/shoes.route'
 
 // Création d'une application fastify
 const app = fastify({ logger: true })
@@ -17,7 +18,8 @@ app.register(fastifyMongodb, {url: process.env.DATABASE_URL,
 })
 // On enregistre le plugin des utilisateurs
 app.register(users)
-
+// On enregistre le plugin des shoes
+app.register(shoes)
 // On enregistre le plugin nous permettant de gérer les jetons
 app.register(fastifyJwt, {
   // On spécifie le secret utilisé pour générer et valider nos jetons

@@ -8,17 +8,17 @@ import { UserModel } from './users.model'
 export const ShoesModel = z.object({
   _id: z.preprocess(id => `${id}`, z.string()),
   title: z.string().min(2),
-  price: z.number().min(2).max(300),
+  price: z.number().min(2).max(1000), //between
   model: z.string().min(2),
   brand: z.string().min(2),
-  pictures: z.array(z.string()),
-  description: z.string(),
-  couleur: z.string(),
+  pictures: z.array(z.string().url()),
+  description: z.string().optional(),
+  color: z.string().regex(/^[a-f0-9A-F]{6}$|^[a-f0-9A-F]{3}$/), //les regex (l'expression reguliere)
   condition: z
     .enum(['neuf', 'semi neuve', 'usé', 'très usé'])
     .optional()
     .default('neuf'),
-  size: z.number(),
+  size: z.number().min(10).max(70),
   userVendeur: UserModel,
 })
 //img :
@@ -47,6 +47,12 @@ export type NewShoesType = z.infer<typeof NewShoesModel>
 
 //Schéma de NewShoesModel
 export const NewShoesSchema = zodToJsonSchema(NewShoesModel)
+
+////// pour ajouter une parametre à model utiliser: extend()
+////// ex. : export const ShoesModel = NewShoesModel.extend({
+          //   _id: z.preprocess(id => `${id}`, z.string()),
+          //   user: UserModel,
+          // })
 
 //-----------Lister les annonces de vente de chaussure-------------
 
