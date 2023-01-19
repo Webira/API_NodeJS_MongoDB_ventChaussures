@@ -16,6 +16,11 @@ const app = fastify({ logger: true })
 app.register(fastifyMongodb, {url: process.env.DATABASE_URL,
     database: process.env.NOMDB,
 })
+
+// app.register(fastifyCors, {
+//     origin: true,
+//   })
+
 // On enregistre le plugin des utilisateurs
 app.register(users)
 // On enregistre le plugin des shoes

@@ -48,11 +48,11 @@ export type NewShoesType = z.infer<typeof NewShoesModel>
 //Schéma de NewShoesModel
 export const NewShoesSchema = zodToJsonSchema(NewShoesModel)
 
-////// pour ajouter une parametre à model utiliser: extend()
-////// ex. : export const ShoesModel = NewShoesModel.extend({
-          //   _id: z.preprocess(id => `${id}`, z.string()),
-          //   user: UserModel,
-          // })
+//////----ex. : pour ajouter une parametre à model utiliser: extend()
+//        export const ShoesModel = NewShoesModel.extend({
+//           _id: z.preprocess(id => `${id}`, z.string()),
+//           user: UserModel,
+//        })
 
 //-----------Lister les annonces de vente de chaussure-------------
 
@@ -68,24 +68,25 @@ export const SearchShoesCriteriaModel = z.object({
       'title',
       'model',
       'brand',
-      'couleur',
+      'color',
       'size',
       'condition',
     ])
     .optional()
     .default('_id'),
   direction: z
+  //??prof
     .enum(['asc', 'desc'])
     .optional()
     .default('asc')
     .transform(dir => ('asc' === dir ? 1 : -1)),
   minPrice: z.number().optional(),
   maxPrice: z.number().optional(),
-  couleur: z.string().optional(),
+  color: z.string().optional(),
   minSize: z.number().optional(),
   maxSize: z.number().optional(),
-  condition: z.string().optional(), //?????????
-  user: z.string().email().optional(),
+  condition: z.string().optional(), 
+  user: z.string().optional(),
 })
 
 //Type de NewShoesModel
@@ -98,8 +99,32 @@ export const SearchShoesCriteriaSchema = zodToJsonSchema(
 
 // 4.-----Création ShoesCollectionModel
 export const ShoesCollectionModel = z.array(ShoesModel)
+
 //Type de NewShoesModel
 export type ShoesCollectionType = z.infer<typeof ShoesCollectionModel>
 
 //Schéma de NewShoesModel
 export const ShoesCollectionSchema = zodToJsonSchema(ShoesCollectionModel)
+
+// 5.---------UpdateShoesModel
+
+export const UpdateShoesModel = NewShoesModel.deepPartial()
+
+//Type de UserCollectionModel
+export type UpdateShoesType = z.infer<typeof UpdateShoesModel>
+
+// Schéma de UserCollectionModel
+export const UpdateShoesSchema = zodToJsonSchema(UpdateShoesModel)
+
+// 6.---------IdOwnedModel
+
+export const IdOwnedModel = z.object({
+  id: z.string(),
+  // z.preprocess(id => `${id}`, z.string()),
+})
+
+//Type de UserCollectionModel
+export type IdOwnedType = z.infer<typeof IdOwnedModel>
+
+// Schéma de UserCollectionModel
+export const IdOwnedSchema = zodToJsonSchema(IdOwnedModel)
