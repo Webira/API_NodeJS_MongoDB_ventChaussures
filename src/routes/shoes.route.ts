@@ -130,9 +130,11 @@ export default async function shoes(app: FastifyInstance) {
 
       //code prof de ligne147 : const { id } = IdOwnerModel.parse(request.params)
 
-      const shoesM = await app.mongo.db?.collection('shoes').findOne({
-        _id: new ObjectId(idShoes),
-      })
+      const shoesM = ShoesModel.parse(
+        await app.mongo.db?.collection('shoes').findOne({
+          _id: new ObjectId(idShoes),
+        }),
+      )
 
       // Récupérer l'identifiant de l'utilisateur contenue dans le jeton
       // de connexion.
@@ -148,7 +150,7 @@ export default async function shoes(app: FastifyInstance) {
       // code prof
       //if (shoes.user._id !== user._id) {
       //moi
-      if (shoes.userVendeur._id !== user._id) {
+      if (shoesM.userVendeur._id !== user._id) {
         //???
         reply.code(404)
 
@@ -160,7 +162,7 @@ export default async function shoes(app: FastifyInstance) {
           //code prof
           // _id: new ObjectId(shoes._id),
           //moi
-          _id: new ObjectId(shoesM), //????
+          _id: new ObjectId(shoesM._id), //????
         },
         {
           //metre à jour le shoes
@@ -176,7 +178,7 @@ export default async function shoes(app: FastifyInstance) {
     },
   )
 
-  //--------Supprimer une chaussure
+  //--------Supprimer l'une annonce de chaussures
 
   app.delete(
     '/shoes/:id',

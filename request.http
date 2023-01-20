@@ -96,11 +96,11 @@ POST http://127.0.0.1:5353/users
 Content-Type: application/json
 
 {
-  "email": "mail@gmail.com",
-  "firstname": "Janne",
-  "lastname": "Don",
-  "password": "zzz111222",
-  "repeated_password": "zzz111222"
+  "email": "mailinn@gmail.com",
+  "firstname": "Mailinne",
+  "lastname": "Dondon",
+  "password": "zzz111111",
+  "repeated_password": "zzz111111"
 }
 
 ###
@@ -133,7 +133,8 @@ GET http://127.0.0.1:5353/users?email=mail@gmail.com
 ###
 
 GET http://127.0.0.1:5353/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M3YjUwZjQ1NDA4YjdmZjc2YWY5MzgiLCJlbWFpbCI6Im1haWxAZ21haWwuY29tIiwiaWF0IjoxNjc0MDQ2MDAyfQ.VutK5ssYa8idTm71Q4bfq0Q_MedFPxJBQKrutCxGUIc
+Authorization: Bearer   ],}
+
 
 
 ###
@@ -145,3 +146,27 @@ Content-Type: application/json
   "email": "rose@mail.com",
   "password": "rose12345"
 }
+
+###
+POST http://127.0.0.1:5353/shoes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M3YjUwZjQ1NDA4YjdmZjc2YWY5MzgiLCJlbWFpbCI6Im1haWxAZ21haWwuY29tIiwiaWF0IjoxNjc0MjI5OTU5fQ._78Q6RVHe9OoBderWwfw8l1fVmyJoDmdEDjaUUwRkss
+
+{
+  "title": "Vend nike bon état",
+  "brand": "Nike",
+  "model": "Air force one",
+  "price": 100,
+  "color": "FFF",
+  "condition": "neuf",
+  "size": 35,
+  "pictures": [
+    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.solecollector.com%2Fcomplex%2Fimage%2Fupload%2Fzgjc5ijooqtwir1ccspq.jpg&f=1&nofb=1&ipt=6639b88daa5f1fb1f71ec57ad81479866c8535ecc0af07ec594ae6969156465d&ipo=images"
+  ]
+}
+
+###
+
+GET http://localhost:5353/shoes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2M3YjUwZjQ1NDA4YjdmZjc2YWY5MzgiLCJlbWFpbCI6Im1haWxAZ21haWwuY29tIiwiaWF0IjoxNjc0MjI5OTU5fQ._78Q6RVHe9OoBderWwfw8l1fVmyJoDmdEDjaUUwRkss

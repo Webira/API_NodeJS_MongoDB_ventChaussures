@@ -40,7 +40,7 @@ export const ShoesSchema = zodToJsonSchema(ShoesModel)
 
 // 2.----NewShoesModel (envoyer à la BDD)
 
-export const NewShoesModel = UserModel.omit({ _id: true, userVendeur: true })
+export const NewShoesModel = ShoesModel.omit({ _id: true, userVendeur: true })
 
 //Type de NewShoesModel
 export type NewShoesType = z.infer<typeof NewShoesModel>
@@ -75,7 +75,7 @@ export const SearchShoesCriteriaModel = z.object({
     .optional()
     .default('_id'),
   direction: z
-  //??prof
+    //??prof
     .enum(['asc', 'desc'])
     .optional()
     .default('asc')
@@ -85,7 +85,7 @@ export const SearchShoesCriteriaModel = z.object({
   color: z.string().optional(),
   minSize: z.number().optional(),
   maxSize: z.number().optional(),
-  condition: z.string().optional(), 
+  condition: z.string().optional(),
   user: z.string().optional(),
 })
 
